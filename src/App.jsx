@@ -6,17 +6,47 @@ import Tasks from './pages/Tasks';
 import Notes from './pages/Notes';
 import Timer from './pages/Timer';
 import Layout from './components/Layout';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/tasks" element={<Tasks />} />
-        <Route path="/notes" element={<Notes />} />
-        <Route path="/timer" element={<Timer />} />
+
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/tasks"
+          element={
+            <ProtectedRoute>
+              <Tasks />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/notes"
+          element={
+            <ProtectedRoute>
+              <Notes />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/timer"
+          element={
+            <ProtectedRoute>
+              <Timer />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Layout>
   );

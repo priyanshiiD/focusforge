@@ -1,39 +1,65 @@
-import { FaSun, FaMoon } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+// src/components/Navbar.jsx
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-function Navbar({ darkMode, setDarkMode }) {
+function Navbar() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loggedInStatus = localStorage.getItem('isLoggedIn') === 'true';
+    setIsLoggedIn(loggedInStatus);
+  }, [location]); // re-check login status on route change
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    setIsLoggedIn(false);
+    navigate('/login');
+  };
+
   return (
-    <nav className="flex items-center justify-between px-4 py-3 bg-white dark:bg-gray-800 shadow-md">
-      <h1 className="text-xl font-bold text-gray-800 dark:text-white">
-        <Link to="/">FocusForge</Link>
-      </h1>
+    <header className="w-full bg-white dark:bg-gray-900 shadow-md p-4 flex justify-between items-center sticky top-0 z-50">
+      <Link
+        to="/"
+        className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent"
+      >
+        FocusForge
+      </Link>
 
-      <div className="flex gap-4 items-center">
-        <Link
-          to="/login"
-          className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:underline"
-        >
-          Login
-        </Link>
-        <Link
-          to="/signup"
-          className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:underline"
-        >
-          Signup
-        </Link>
-
-        <button
-          onClick={() => setDarkMode(prev => !prev)}
-          className="text-xl p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition"
-        >
-          {darkMode ? (
-            <FaSun className="text-yellow-500" />
-          ) : (
-            <FaMoon className="text-blue-500" />
-          )}
-        </button>
+      <div className="space-x-4 text-sm md:text-base flex items-center">
+        {!isLoggedIn ? (
+          <>
+            <Link
+              to="/login"
+              className="text-gray-700 dark:text-gray-200 hover:text-blue-600"
+            >
+              Login
+            </Link>
+            <Link
+              to="/signup"
+              className="text-gray-700 dark:text-gray-200 hover:text-purple-600"
+            >
+              Signup
+            </Link>
+          </>
+        ) : (
+          <>
+            <img
+              src="/src/assets/default-avatar.png"
+              alt="User Avatar"
+              className="w-8 h-8 rounded-full border-2 border-blue-400"
+            />
+            <button
+              onClick={handleLogout}
+              className="text-red-500 hover:text-red-600 font-medium"
+            >
+              Logout
+            </button>
+          </>
+        )}
       </div>
-    </nav>
+    </header>
   );
 }
 

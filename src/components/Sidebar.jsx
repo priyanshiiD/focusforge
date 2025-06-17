@@ -1,6 +1,6 @@
 // src/components/Sidebar.jsx
-import { FaTasks, FaStickyNote, FaStopwatch, FaHome } from 'react-icons/fa';
-import { Link, useLocation } from 'react-router-dom';
+import { FaTasks, FaStickyNote, FaStopwatch, FaHome, FaSignOutAlt } from 'react-icons/fa';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 const links = [
@@ -13,6 +13,12 @@ const links = [
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    navigate('/login');
+  };
 
   return (
     <>
@@ -29,35 +35,42 @@ function Sidebar() {
 
       {/* Sidebar */}
       <aside
-  className={`${
-    isOpen ? 'block' : 'hidden'
-  } md:flex flex-col w-64 p-6 shadow-xl rounded-tr-3xl rounded-br-3xl transition-all 
-     fixed md:static top-0 h-full z-40 bg-gradient-to-br from-pink-100 via-blue-100 to-purple-100 
-     dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white`}
->
-
+        className={`${
+          isOpen ? 'block' : 'hidden'
+        } md:flex flex-col w-64 p-6 shadow-xl rounded-tr-3xl rounded-br-3xl transition-all 
+           fixed md:static top-0 h-full z-40 bg-gradient-to-br from-pink-100 via-blue-100 to-purple-100 
+           dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white`}
+      >
         <h2 className="text-3xl font-extrabold mb-8 bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">
-  FocusForge
-</h2>
+          FocusForge
+        </h2>
 
-        <nav className="space-y-4">
+        <nav className="space-y-4 flex-1">
           {links.map((link) => (
             <Link
-  key={link.name}
-  to={link.to}
-  onClick={() => setIsOpen(false)}
-  className={`flex items-center gap-3 p-3 rounded-xl transition-all text-lg font-medium ${
-    location.pathname === link.to
-      ? 'bg-white/60 dark:bg-gray-700 text-blue-700 dark:text-blue-300 shadow'
-      : 'hover:bg-white/30 dark:hover:bg-gray-700 hover:text-blue-800 dark:hover:text-blue-300'
-  }`}
->
-
+              key={link.name}
+              to={link.to}
+              onClick={() => setIsOpen(false)}
+              className={`flex items-center gap-3 p-3 rounded-xl transition-all text-lg font-medium ${
+                location.pathname === link.to
+                  ? 'bg-white/60 dark:bg-gray-700 text-blue-700 dark:text-blue-300 shadow'
+                  : 'hover:bg-white/30 dark:hover:bg-gray-700 hover:text-blue-800 dark:hover:text-blue-300'
+              }`}
+            >
               {link.icon}
               <span>{link.name}</span>
             </Link>
           ))}
         </nav>
+
+        {/* Logout Button */}
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-3 p-3 rounded-xl text-lg font-medium text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-800 transition-all"
+        >
+          <FaSignOutAlt />
+          <span>Logout</span>
+        </button>
       </aside>
     </>
   );
