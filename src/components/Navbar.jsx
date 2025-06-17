@@ -1,21 +1,32 @@
 // src/components/Navbar.jsx
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 function Navbar() {
   const location = useLocation();
-  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem('theme') === 'dark'
+  );
 
   useEffect(() => {
     const loggedInStatus = localStorage.getItem('isLoggedIn') === 'true';
     setIsLoggedIn(loggedInStatus);
-  }, [location]); // re-check login status on route change
+  }, [location]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    setIsLoggedIn(false);
-    navigate('/login');
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
+  const toggleTheme = () => {
+    setDarkMode((prev) => !prev);
   };
 
   return (
@@ -27,8 +38,18 @@ function Navbar() {
         FocusForge
       </Link>
 
-      <div className="space-x-4 text-sm md:text-base flex items-center">
-        {!isLoggedIn ? (
+      <div className="flex items-center gap-4 text-sm md:text-base">
+        {/* Theme Toggle */}
+        <button
+          onClick={toggleTheme}
+          className="text-xl text-gray-700 dark:text-gray-300 hover:text-purple-500 transition"
+          title="Toggle Theme"
+        >
+          {darkMode ? <FaSun /> : <FaMoon />}
+        </button>
+
+        {/* Show Login/Signup only if not logged in */}
+        {!isLoggedIn && (
           <>
             <Link
               to="/login"
@@ -42,20 +63,6 @@ function Navbar() {
             >
               Signup
             </Link>
-          </>
-        ) : (
-          <>
-            <img
-              src="/src/assets/default-avatar.png"
-              alt="User Avatar"
-              className="w-8 h-8 rounded-full border-2 border-blue-400"
-            />
-            <button
-              onClick={handleLogout}
-              className="text-red-500 hover:text-red-600 font-medium"
-            >
-              Logout
-            </button>
           </>
         )}
       </div>
