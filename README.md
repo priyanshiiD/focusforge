@@ -10,9 +10,10 @@
 
 ## 🌐 Live Demo
 
-**Frontend**: https://focusforge-5v894sliw-priyanshi-dawars-projects.vercel.app
+- **Frontend App:** [https://focusforge-5v894sliw-priyanshi-dawars-projects.vercel.app](https://focusforge-5v894sliw-priyanshi-dawars-projects.vercel.app)
+- **Backend API:** [https://focusforge-production.up.railway.app](https://focusforge-production.up.railway.app)
 
-*Note: Backend deployment in progress. The app will be fully functional once the backend is deployed to Railway.*
+_Both frontend and backend are fully deployed and production-ready!_
 
 ## ✨ Features
 
