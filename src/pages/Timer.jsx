@@ -92,7 +92,7 @@ function Timer() {
       if (mode === 'work') {
         setMode('shortBreak');
         setTimeLeft(POMODORO_TIMES.shortBreak);
-      } else {
+    } else {
         setMode('work');
         setTimeLeft(POMODORO_TIMES.work);
       }
@@ -175,7 +175,7 @@ function Timer() {
                 <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 capitalize">
                   {mode === 'work' ? 'Focus Time' : mode === 'shortBreak' ? 'Short Break' : mode === 'longBreak' ? 'Long Break' : 'Custom Timer'}
                 </h2>
-              </div>
+      </div>
 
               {/* Timer Circle */}
               <div className="relative w-64 h-64 mx-auto mb-8">
@@ -202,13 +202,13 @@ function Timer() {
                     strokeLinecap="round"
                     className="transition-all duration-1000 ease-linear"
                   />
-                  <defs>
+          <defs>
                     <linearGradient id={getModeColor().replace(/\s/g, '-')} x1="0%" y1="0%" x2="100%" y2="0%">
                       <stop offset="0%" stopColor={getModeColor().split(' ')[0].replace('from-', '')} />
                       <stop offset="100%" stopColor={getModeColor().split(' ')[1].replace('to-', '')} />
-                    </linearGradient>
-                  </defs>
-                </svg>
+            </linearGradient>
+          </defs>
+        </svg>
                 
                 {/* Time Display */}
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -221,7 +221,7 @@ function Timer() {
                     </div>
                   </div>
                 </div>
-              </div>
+      </div>
 
               {/* Controls */}
               <div className="flex justify-center gap-4 mb-6">
@@ -234,22 +234,22 @@ function Timer() {
                     Start
                   </button>
                 ) : (
-                  <button
+        <button
                     onClick={pauseTimer}
                     className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white px-8 py-3 rounded-2xl font-semibold transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl"
-                  >
+        >
                     <FaPause className="text-sm" />
                     Pause
-                  </button>
+        </button>
                 )}
-                <button
-                  onClick={resetTimer}
+        <button
+          onClick={resetTimer}
                   className="bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl"
-                >
+        >
                   <FaRedo className="text-sm" />
-                  Reset
-                </button>
-              </div>
+          Reset
+        </button>
+      </div>
 
               {/* Mode Buttons */}
               <div className="flex justify-center gap-3 flex-wrap">

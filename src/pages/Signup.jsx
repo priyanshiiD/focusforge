@@ -170,7 +170,7 @@ function Signup() {
               transition={{ delay: 0.3 }}
               className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6"
             >
-              Create Account
+          Create Account
             </motion.h2>
 
             {error && (
@@ -194,17 +194,17 @@ function Signup() {
                 </label>
                 <div className="relative">
                   <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
-                    type="text"
-                    name="name"
+        <input
+          type="text"
+          name="name"
                     className={`w-full pl-12 pr-4 py-3 rounded-xl border bg-white/50 dark:bg-gray-700/50 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:border-transparent backdrop-blur-sm transition-all ${
                       validationErrors.name 
                         ? 'border-red-300 dark:border-red-600 focus:ring-red-400' 
                         : 'border-gray-300 dark:border-gray-600 focus:ring-purple-400'
                     }`}
                     value={formData.name}
-                    onChange={handleChange}
-                    required
+          onChange={handleChange}
+          required
                     placeholder="Enter your full name"
                     disabled={isLoading}
                   />
@@ -224,17 +224,17 @@ function Signup() {
                 </label>
                 <div className="relative">
                   <FaEnvelope className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
-                    type="email"
-                    name="email"
+        <input
+          type="email"
+          name="email"
                     className={`w-full pl-12 pr-4 py-3 rounded-xl border bg-white/50 dark:bg-gray-700/50 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:border-transparent backdrop-blur-sm transition-all ${
                       validationErrors.email 
                         ? 'border-red-300 dark:border-red-600 focus:ring-red-400' 
                         : 'border-gray-300 dark:border-gray-600 focus:ring-purple-400'
                     }`}
                     value={formData.email}
-                    onChange={handleChange}
-                    required
+          onChange={handleChange}
+          required
                     placeholder="Enter your email"
                     disabled={isLoading}
                   />
@@ -254,17 +254,17 @@ function Signup() {
                 </label>
                 <div className="relative">
                   <FaLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
+        <input
                     type={showPassword ? "text" : "password"}
-                    name="password"
+          name="password"
                     className={`w-full pl-12 pr-12 py-3 rounded-xl border bg-white/50 dark:bg-gray-700/50 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:border-transparent backdrop-blur-sm transition-all ${
                       validationErrors.password 
                         ? 'border-red-300 dark:border-red-600 focus:ring-red-400' 
                         : 'border-gray-300 dark:border-gray-600 focus:ring-purple-400'
                     }`}
                     value={formData.password}
-                    onChange={handleChange}
-                    required
+          onChange={handleChange}
+          required
                     placeholder="Create a password"
                     disabled={isLoading}
                   />
@@ -291,7 +291,7 @@ function Signup() {
                 </label>
                 <div className="relative">
                   <FaLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
+        <input
                     type={showConfirmPassword ? "text" : "password"}
                     name="confirmPassword"
                     className={`w-full pl-12 pr-12 py-3 rounded-xl border bg-white/50 dark:bg-gray-700/50 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:border-transparent backdrop-blur-sm transition-all ${
@@ -300,12 +300,12 @@ function Signup() {
                         : 'border-gray-300 dark:border-gray-600 focus:ring-purple-400'
                     }`}
                     value={formData.confirmPassword}
-                    onChange={handleChange}
-                    required
+          onChange={handleChange}
+          required
                     placeholder="Confirm your password"
                     disabled={isLoading}
-                  />
-                  <button
+        />
+        <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
@@ -322,7 +322,7 @@ function Signup() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.8 }}
-                type="submit"
+          type="submit"
                 disabled={isLoading}
                 className="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center shadow-lg hover:shadow-xl"
               >
@@ -335,7 +335,7 @@ function Signup() {
                   'Create Account'
                 )}
               </motion.button>
-            </form>
+      </form>
 
             <motion.div 
               initial={{ opacity: 0 }}

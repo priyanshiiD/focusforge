@@ -64,8 +64,8 @@ function Sidebar() {
               <span>{link.name}</span>
             </Link>
           </motion.div>
-        ))}
-      </nav>
+          ))}
+        </nav>
 
       {/* Motivational Quote */}
       <div className="mt-8 mb-4 p-4 rounded-2xl bg-white/60 dark:bg-gray-800/60 shadow flex items-center gap-3 text-sm text-gray-700 dark:text-gray-200 border border-white/20 dark:border-gray-700/20">

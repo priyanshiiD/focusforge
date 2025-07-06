@@ -57,16 +57,16 @@ function Notes() {
     
     try {
       const noteData = {
-        content: newNote,
-        label,
-        pinned: false,
-        archived: false,
-        trashed: false,
-      };
+      content: newNote,
+      label,
+      pinned: false,
+      archived: false,
+      trashed: false,
+    };
       
       const response = await apiService.createNote(noteData);
       setNotes([response.note, ...notes]);
-      setNewNote('');
+    setNewNote('');
     } catch (error) {
       console.error('Error adding note:', error);
     }
@@ -75,9 +75,9 @@ function Notes() {
   const togglePin = async (id) => {
     try {
       await apiService.toggleNotePin(id);
-      setNotes(notes.map(note =>
+    setNotes(notes.map(note =>
         note._id === id ? { ...note, pinned: !note.pinned } : note
-      ));
+    ));
     } catch (error) {
       console.error('Error toggling pin:', error);
     }
@@ -86,9 +86,9 @@ function Notes() {
   const archiveNote = async (id) => {
     try {
       await apiService.updateNote(id, { archived: !notes.find(n => n._id === id)?.archived });
-      setNotes(notes.map(note =>
+    setNotes(notes.map(note =>
         note._id === id ? { ...note, archived: !note.archived } : note
-      ));
+    ));
     } catch (error) {
       console.error('Error archiving note:', error);
     }
@@ -155,7 +155,7 @@ function Notes() {
             📝 Notes
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 italic">
-            {QUOTES[quoteIndex]}
+        {QUOTES[quoteIndex]}
           </p>
         </motion.div>
 
@@ -177,11 +177,11 @@ function Notes() {
           <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/20 backdrop-blur-lg border border-purple-200/50 rounded-2xl p-4 text-center">
             <div className="text-2xl font-bold text-purple-700 dark:text-purple-300">{analytics.archived}</div>
             <div className="text-sm text-purple-600 dark:text-purple-400">Archived</div>
-          </div>
+      </div>
           <div className="bg-gradient-to-r from-red-500/20 to-red-600/20 backdrop-blur-lg border border-red-200/50 rounded-2xl p-4 text-center">
             <div className="text-2xl font-bold text-red-700 dark:text-red-300">{analytics.trashed}</div>
             <div className="text-sm text-red-600 dark:text-red-400">Trashed</div>
-          </div>
+      </div>
         </motion.div>
 
         {/* New Note Section */}
@@ -193,39 +193,39 @@ function Notes() {
         >
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="flex-1">
-              <textarea
+        <textarea
                 rows="4"
                 placeholder="Write your thoughts, ideas, or reminders..."
-                value={newNote}
-                onChange={(e) => setNewNote(e.target.value)}
+          value={newNote}
+          onChange={(e) => setNewNote(e.target.value)}
                 className="w-full p-4 rounded-2xl border border-gray-200/50 dark:border-gray-600/50 bg-white/50 dark:bg-gray-700/50 text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent backdrop-blur-sm transition-all resize-none"
-              />
+        />
             </div>
             <div className="flex flex-col gap-3">
-              <select
-                value={label}
-                onChange={(e) => setLabel(e.target.value)}
+          <select
+            value={label}
+            onChange={(e) => setLabel(e.target.value)}
                 className="px-4 py-3 rounded-2xl border border-gray-200/50 dark:border-gray-600/50 bg-white/50 dark:bg-gray-700/50 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent backdrop-blur-sm transition-all"
-              >
-                {labelOptions.map(l => (
-                  <option key={l}>{l}</option>
-                ))}
-              </select>
-              <button
-                onClick={addNote}
+          >
+            {labelOptions.map(l => (
+              <option key={l}>{l}</option>
+            ))}
+          </select>
+          <button
+            onClick={addNote}
                 className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
-              >
+          >
                 <FaPlus className="text-sm" />
                 Add Note
-              </button>
-              <button
-                onClick={() => setShowPreview(!showPreview)}
+          </button>
+          <button
+            onClick={() => setShowPreview(!showPreview)}
                 className="text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
-              >
-                {showPreview ? "Hide Preview" : "Preview Markdown"}
-              </button>
-            </div>
-          </div>
+          >
+            {showPreview ? "Hide Preview" : "Preview Markdown"}
+          </button>
+        </div>
+      </div>
         </motion.div>
 
         {/* Search */}
@@ -236,35 +236,35 @@ function Notes() {
           className="relative mb-6"
         >
           <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          <input
-            type="text"
+      <input
+        type="text"
             placeholder="Search your notes..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-12 pr-4 py-4 rounded-2xl border border-gray-200/50 dark:border-gray-600/50 bg-white/50 dark:bg-gray-700/50 text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent backdrop-blur-sm transition-all"
-          />
+      />
         </motion.div>
 
-        {/* Filters */}
+      {/* Filters */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
           className="flex gap-2 mb-6 flex-wrap"
         >
-          {['All', 'Pinned', 'Archived', ...labelOptions].map(f => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
+        {['All', 'Pinned', 'Archived', ...labelOptions].map(f => (
+          <button
+            key={f}
+            onClick={() => setFilter(f)}
               className={`px-4 py-2 rounded-full transition-all duration-200 font-medium ${
-                filter === f
+              filter === f
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
                   : 'bg-white/50 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-white/70 dark:hover:bg-gray-600/50 border border-gray-200/50 dark:border-gray-600/50'
-              }`}
-            >
-              {f}
-            </button>
-          ))}
+            }`}
+          >
+            {f}
+          </button>
+        ))}
         </motion.div>
 
         {/* Notes Grid */}
@@ -274,14 +274,14 @@ function Notes() {
           transition={{ delay: 0.5 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          <AnimatePresence>
-            {filteredNotes.map(note => (
-              <motion.div
+      <AnimatePresence>
+        {filteredNotes.map(note => (
+          <motion.div
                 key={note._id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+            transition={{ duration: 0.2 }}
                 className={`bg-gradient-to-br ${COLORS[note.label]} backdrop-blur-lg border rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 group`}
               >
                 <div className="flex justify-between items-start mb-4">
@@ -323,16 +323,16 @@ function Notes() {
                 <div className="prose dark:prose-invert max-w-none">
                   <div
                     className="text-gray-800 dark:text-gray-200 leading-relaxed"
-                    dangerouslySetInnerHTML={{
-                      __html: showPreview
-                        ? marked.parse(note.content)
+                  dangerouslySetInnerHTML={{
+                    __html: showPreview
+                      ? marked.parse(note.content)
                         : note.content.replace(/\n/g, '<br>')
-                    }}
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+                  }}
+                />
+            </div>
+          </motion.div>
+        ))}
+      </AnimatePresence>
         </motion.div>
 
         {filteredNotes.length === 0 && (

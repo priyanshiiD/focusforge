@@ -46,16 +46,16 @@ function Tasks() {
     
     try {
       const taskData = {
-        title: newTask,
+      title: newTask,
         dueDate: dueDate || null,
-        category,
-        completed: false,
-      };
+      category,
+      completed: false,
+    };
       
       const response = await apiService.createTask(taskData);
       setTasks([...tasks, response.task]);
-      setNewTask('');
-      setDueDate('');
+    setNewTask('');
+    setDueDate('');
     } catch (error) {
       console.error('Error adding task:', error);
     }
@@ -87,7 +87,7 @@ function Tasks() {
       for (const task of completedTasks) {
         await apiService.deleteTask(task._id);
       }
-      setTasks(tasks.filter(task => !task.completed));
+    setTasks(tasks.filter(task => !task.completed));
     } catch (error) {
       console.error('Error clearing completed tasks:', error);
     }
@@ -106,8 +106,8 @@ function Tasks() {
       setTasks(tasks.map(task => 
         task._id === id ? { ...task, title: editedTitle } : task
       ));
-      setEditingTaskId(null);
-      setEditedTitle('');
+    setEditingTaskId(null);
+    setEditedTitle('');
     } catch (error) {
       console.error('Error updating task:', error);
     }
@@ -268,19 +268,19 @@ function Tasks() {
                           
                           <div className="flex-1">
                             {editingTaskId === task._id ? (
-                              <input
+                            <input
                                 type="text"
-                                value={editedTitle}
-                                onChange={(e) => setEditedTitle(e.target.value)}
+                              value={editedTitle}
+                              onChange={(e) => setEditedTitle(e.target.value)}
                                 onKeyPress={(e) => e.key === 'Enter' && saveEdit(task._id)}
                                 onBlur={() => saveEdit(task._id)}
                                 className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                                autoFocus
-                              />
-                            ) : (
+                              autoFocus
+                            />
+                          ) : (
                               <div className="flex items-center gap-2">
                                 <span className={`font-medium ${task.completed ? 'line-through text-gray-500' : 'text-gray-800 dark:text-white'}`}>
-                                  {task.title}
+                                {task.title}
                                 </span>
                                 <span className={`px-2 py-1 rounded-full text-xs font-medium ${categoryColors[task.category]}`}>
                                   {task.category}
@@ -291,22 +291,22 @@ function Tasks() {
                                   </span>
                                 )}
                               </div>
-                            )}
-                          </div>
-                          
+                          )}
+                        </div>
+
                           <div className="flex gap-2">
-                            <button
+                          <button
                               onClick={() => startEditing(task._id, task.title)}
                               className="p-2 text-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900 rounded-lg transition-colors"
-                            >
-                              <FaEdit />
-                            </button>
-                            <button
+                          >
+                            <FaEdit />
+                          </button>
+                          <button
                               onClick={() => deleteTask(task._id)}
                               className="p-2 text-red-600 hover:bg-red-100 dark:hover:bg-red-900 rounded-lg transition-colors"
-                            >
-                              <FaTrash />
-                            </button>
+                          >
+                            <FaTrash />
+                          </button>
                           </div>
                         </div>
                       </motion.li>

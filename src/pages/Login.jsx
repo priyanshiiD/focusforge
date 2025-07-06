@@ -143,16 +143,16 @@ function Login() {
                 </label>
                 <div className="relative">
                   <FaEnvelope className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
-                    type="email"
+            <input
+              type="email"
                     className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm transition-all"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
                     placeholder="Enter your email"
                     disabled={isLoading}
-                  />
-                </div>
+            />
+          </div>
               </motion.div>
 
               <motion.div 
@@ -165,12 +165,12 @@ function Login() {
                 </label>
                 <div className="relative">
                   <FaLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
+            <input
                     type={showPassword ? "text" : "password"}
                     className="w-full pl-12 pr-12 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm transition-all"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
                     placeholder="Enter your password"
                     disabled={isLoading}
                   />
@@ -181,14 +181,14 @@ function Login() {
                   >
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </button>
-                </div>
+          </div>
               </motion.div>
 
               <motion.button
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.6 }}
-                type="submit"
+            type="submit"
                 disabled={isLoading}
                 className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center shadow-lg hover:shadow-xl"
               >
@@ -201,7 +201,7 @@ function Login() {
                   'Sign In'
                 )}
               </motion.button>
-            </form>
+        </form>
 
             <motion.div 
               initial={{ opacity: 0 }}
@@ -217,10 +217,10 @@ function Login() {
                 >
                   Create one now
                 </Link>
-              </p>
+        </p>
             </motion.div>
           </motion.div>
-        </div>
+      </div>
       </motion.div>
     </div>
   );

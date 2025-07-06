@@ -62,7 +62,7 @@ function Navbar() {
             onClick={handleLogout}
             className="flex items-center gap-2 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20"
             title="Logout"
-          >
+            >
             <FaSignOutAlt />
             <span className="hidden md:block">Logout</span>
           </motion.button>
