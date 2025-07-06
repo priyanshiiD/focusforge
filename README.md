@@ -8,6 +8,12 @@
 
 > **A full-stack productivity application built with modern web technologies, featuring real-time task management, intelligent time tracking, and comprehensive analytics.**
 
+## 🌐 Live Demo
+
+**Frontend**: https://focusforge-5v894sliw-priyanshi-dawars-projects.vercel.app
+
+*Note: Backend deployment in progress. The app will be fully functional once the backend is deployed to Railway.*
+
 ## ✨ Features
 
 ### 🎯 **Core Functionality**
@@ -183,17 +189,31 @@ focusforge/
 
 ## 🚀 Deployment
 
-### Frontend Deployment (Vercel/Netlify)
+### Frontend Deployment (Vercel)
+✅ **Deployed at: https://focusforge-5v894sliw-priyanshi-dawars-projects.vercel.app**
+
 ```bash
 npm run build
-# Deploy the dist/ folder
+vercel --prod
 ```
 
-### Backend Deployment (Railway/Heroku)
-```bash
-cd server
-npm start
-```
+### Backend Deployment (Railway)
+1. Go to [Railway.app](https://railway.app)
+2. Connect your GitHub repository
+3. Set root directory to `server`
+4. Add environment variables:
+   - `MONGODB_URI`: Your MongoDB Atlas connection string
+   - `JWT_SECRET`: Your JWT secret key
+   - `PORT`: 5000 (or leave empty for Railway to set)
+
+### Environment Variables
+Frontend (Vercel):
+- `VITE_API_URL`: Your deployed backend URL (e.g., `https://your-backend.railway.app/api`)
+
+Backend (Railway):
+- `MONGODB_URI`: MongoDB Atlas connection string
+- `JWT_SECRET`: Secret key for JWT tokens
+- `PORT`: Server port (optional, Railway sets this)
 
 ## 🤝 Contributing
 
