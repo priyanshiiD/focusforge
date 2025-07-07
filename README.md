@@ -198,13 +198,9 @@ vercel --prod
 ```
 
 ### Backend Deployment (Railway)
-1. Go to [Railway.app](https://railway.app)
-2. Connect your GitHub repository
-3. Set root directory to `server`
-4. Add environment variables:
-   - `MONGODB_URI`: Your MongoDB Atlas connection string
-   - `JWT_SECRET`: Your JWT secret key
-   - `PORT`: 5000 (or leave empty for Railway to set)
+✅ **Backend deployed on Railway for production use**
+
+*Backend API is deployed and configured for the live application.*
 
 ### Environment Variables
 Frontend (Vercel):
