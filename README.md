@@ -10,7 +10,7 @@
 
 ## 🌐 Live Demo
 
-- **Live Application:** [https://focusforge-5v894sliw-priyanshi-dawars-projects.vercel.app](https://focusforge-5v894sliw-priyanshi-dawars-projects.vercel.app)
+- **Live Application:** [https://focusforge-sable.vercel.app](https://focusforge-sable.vercel.app)
 
 _Production-ready application with full-stack functionality!_
 
