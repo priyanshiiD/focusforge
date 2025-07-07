@@ -190,7 +190,7 @@ focusforge/
 ## 🚀 Deployment
 
 ### Frontend Deployment (Vercel)
-✅ **Deployed at: https://focusforge-5v894sliw-priyanshi-dawars-projects.vercel.app**
+✅ **Deployed at: https://focusforge-sable.vercel.app**
 
 ```bash
 npm run build
