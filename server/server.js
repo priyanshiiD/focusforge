@@ -9,6 +9,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Debug: Print the MongoDB URI to check if the environment variable is loaded
+console.log('MONGO_URI:', process.env.MONGO_URI);
 // Database connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB'))
