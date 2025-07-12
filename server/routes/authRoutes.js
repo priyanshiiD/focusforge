@@ -13,6 +13,9 @@ const {
 // Public routes
 router.post('/signup', signup);
 router.post('/login', login);
+router.get('/login', (req, res) => {
+  res.json({ success: true, message: "GET /api/auth/login is working!" });
+});
 
 // Protected routes
 router.get('/profile', authMiddleware, getUserProfile);
