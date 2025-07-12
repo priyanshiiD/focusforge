@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 function Layout({ children }) {
   const location = useLocation();
   const [darkMode, setDarkMode] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (darkMode) {
@@ -14,6 +15,11 @@ function Layout({ children }) {
       document.documentElement.classList.remove('dark');
     }
   }, [darkMode]);
+
+  // Close sidebar drawer on route change (mobile)
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [location.pathname]);
 
   const noLayoutRoutes = ['/login', '/signup'];
   const isAuthPage = noLayoutRoutes.includes(location.pathname);
@@ -24,9 +30,9 @@ function Layout({ children }) {
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-white via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 text-black dark:text-white transition-colors">
-      <Sidebar />
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex-1 flex flex-col min-h-screen">
-        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} onMenuClick={() => setSidebarOpen(true)} />
         <main className="flex-1 w-full px-2 sm:px-4 md:px-6 py-4 md:py-8">{children}</main>
       </div>
     </div>

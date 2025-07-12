@@ -1,11 +1,11 @@
 // src/components/Navbar.jsx
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { FaSun, FaMoon, FaSignOutAlt } from 'react-icons/fa';
+import { FaSun, FaMoon, FaSignOutAlt, FaBars } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 import { motion } from 'framer-motion';
 
-function Navbar() {
+function Navbar({ onMenuClick }) {
   const { logout, isAuthenticated } = useAuth();
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem('theme') === 'dark'
@@ -35,13 +35,22 @@ function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       className="w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-md p-4 flex justify-between items-center border-b border-white/20 dark:border-gray-700/20"
     >
-      <Link
-        to="/"
-        className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent hover:scale-105 transition-transform"
-      >
-        FocusForge
-      </Link>
-
+      <div className="flex items-center gap-2">
+        {/* Hamburger menu for mobile */}
+        <button
+          className="md:hidden text-2xl text-gray-700 dark:text-gray-300 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+          onClick={onMenuClick}
+          aria-label="Open sidebar menu"
+        >
+          <FaBars />
+        </button>
+        <Link
+          to="/"
+          className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent hover:scale-105 transition-transform"
+        >
+          FocusForge
+        </Link>
+      </div>
       <div className="flex items-center gap-4 text-sm md:text-base">
         {/* Theme Toggle */}
         <motion.button
@@ -53,7 +62,6 @@ function Navbar() {
         >
           {darkMode ? <FaSun /> : <FaMoon />}
         </motion.button>
-
         {/* Logout Button */}
         {isAuthenticated && (
           <motion.button
